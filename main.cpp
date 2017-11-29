@@ -2,6 +2,21 @@
 #include <memory>
 #include <map>
 #include <string>
+using namespace std;
+
+struct Point {
+    int x, y;
+};
+
+struct PointCmp {
+    bool operator() (const Point & a, const Point & b) {
+        if (a.x == b.x) {
+            return a.y < b.y;
+        } else {
+            return a.x < b.x;
+        }
+    }
+};
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
@@ -44,6 +59,22 @@ int main() {
     std::map<std::string, int> nameToWeightMap = {{"gby", 90}};
 //    auto m = {{"gby", 90}}; // wrong
 //    auto m = {{12, 90}}; // wrong
-
+    std::cout<<typeid(nameToWeightMap).name()<<std::endl;
+    Point x = {1,3};
+    cout<<typeid(x).name()<<endl;
+    auto cmp = [](const Point & a, const Point & b) {
+        if (a.x == b.x) {
+            return a.y < b.y;
+        } else {
+            return a.x < b.x;
+        }
+    };
+    cout<<typeid(cmp).name()<<endl;
+//    std::map<Point, std::string, decltype(cmp)> pointToCountmap = {{{2,3}, "gby"}};
+//    std::map<Point, std::string> pointToCountmap = {{{2,3}, "gby"}};
+    std::map<Point, std::string, PointCmp> pointToCountmap = {{{2,3}, "gby"}, {{2,4}, "dadfasy"}};
+    for (const auto & v : pointToCountmap) {
+        cout<<v.first.x<<","<<v.first.y<<":"<<v.second<<endl;
+    }
     return 0;
 }
