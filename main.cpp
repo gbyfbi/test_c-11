@@ -76,5 +76,8 @@ int main() {
     for (const auto & v : pointToCountmap) {
         cout<<v.first.x<<","<<v.first.y<<":"<<v.second<<endl;
     }
+    int n = -2;
+    int nn = 5;
+    printf("%d %% %d: %d\n", n, nn, n % nn);
     return 0;
 }
