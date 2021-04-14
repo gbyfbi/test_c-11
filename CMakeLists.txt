@@ -19,10 +19,4 @@ include_directories(${CPPNETLIB_INCLUDE_DIRS})
 add_executable(cpp_netlib_hack cpp_netlib_hack.cpp)
 target_link_libraries(cpp_netlib_hack PRIVATE cppnetlib-uri cppnetlib-server-parsers cppnetlib-client-connections)
 
-##include_directories ( /home/gao/Downloads/cpp-netlib/install/include )
-#target_link_libraries ( cpp_netlib_hack
-#        /home/gao/Downloads/cpp-netlib/install/lib/libcppnetlib-client-connections.a
-#        /home/gao/Downloads/cpp-netlib/install/lib/libcppnetlib-server-parsers.a
-#        /home/gao/Downloads/cpp-netlib/install/lib/libnetwork-uri.a
-#        ${Boost_LIBRARIES}
-#        )
+add_subdirectory(socket_hack)
